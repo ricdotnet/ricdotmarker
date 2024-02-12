@@ -148,6 +148,9 @@ M.open_window = function()
   vim.api.nvim_buf_set_lines(bufnr, 0, #marks - 2, false, marks)
   vim.api.nvim_buf_set_option(bufnr, "filetype", "ricdotmarker")
 
+  vim.keymap.set("n", "<Left>", "<Nop>")
+  vim.keymap.set("n", "<Right>", "<Nop>")
+
   -- set default keymaps
   if (RicdotmarkerConfig.keymaps == nil) then
     vim.api.nvim_buf_set_keymap(

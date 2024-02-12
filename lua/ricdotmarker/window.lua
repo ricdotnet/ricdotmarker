@@ -57,6 +57,9 @@ W.close_window = function()
   vim.api.nvim_win_close(Window, true)
   vim.cmd("set modifiable")
 
+  vim.keymap.set("n", "<Right>", "<Right>")
+  vim.keymap.set("n", "<Left>", "<Left>")
+
   Window = nil
 end
 

@@ -13,26 +13,26 @@ W.create_window = function()
   local col = math.floor(((vim.o.columns - min_width) / 2) - 1)
 
   -- print("w: " .. win_width .. " h: " .. win_height)
-  print((vim.o.columns - min_width) / 2 .. " " .. win_width)
+  print((vim.o.columns - min_width) / 2 .. ' ' .. win_width)
 
-  if (win_width < 70) then
+  if win_width < 70 then
     -- min_width = math.floor(win_width * 0.9) - 2
     min_width = win_width - 10
     col = 6
   end
 
-  if (win_height < 30) then
+  if win_height < 30 then
     min_height = math.floor(win_height * 0.9) - 2
   end
 
-  -- local borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" }
-  local borderchars = RicdotmarkerConfig.borderchars or { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
+  local borderchars = { '═', '║', '═', '║', '╔', '╗', '╝', '╚' }
+  -- local borderchars = RicdotmarkerConfig.borderchars or { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
 
-  local popup = require("plenary.popup")
+  local popup = require 'plenary.popup'
 
   -- settings for the fzf window
   local opts = {
-    title = RicdotmarkerConfig.title or "ricdotmarker",
+    title = RicdotmarkerConfig.title or 'ricdotmarker',
     line = math.floor(((vim.o.lines - min_height) / 2) - 1),
     col = col,
     minwidth = min_width,
@@ -45,7 +45,7 @@ W.create_window = function()
 
   Window = win_id
 
-  vim.api.nvim_win_set_option(win_id, "number", true)
+  vim.api.nvim_win_set_option(win_id, 'number', true)
 
   return {
     bufnr = bufnr,
@@ -55,10 +55,10 @@ end
 
 W.close_window = function()
   vim.api.nvim_win_close(Window, true)
-  vim.cmd("set modifiable")
+  vim.cmd 'set modifiable'
 
-  vim.keymap.set("n", "<Right>", "<Right>")
-  vim.keymap.set("n", "<Left>", "<Left>")
+  vim.keymap.set('n', '<Right>', '<Right>')
+  vim.keymap.set('n', '<Left>', '<Left>')
 
   Window = nil
 end

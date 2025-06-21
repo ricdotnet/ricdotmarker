@@ -1,4 +1,4 @@
-local Path = require("plenary.path")
+local Path = require 'plenary.path'
 
 local U = {}
 
@@ -9,12 +9,12 @@ end
 U.get_index = function(list, value, key)
   local idx = -1
   for i, element in ipairs(list) do
-    if (key ~= nil) then
-      if (element[key] == value) then
+    if key ~= nil then
+      if element[key] == value then
         idx = i
       end
     else
-      if (element == value) then
+      if element == value then
         idx = i
         break
       end
@@ -25,10 +25,10 @@ U.get_index = function(list, value, key)
 end
 
 U.get_icon = function(filename)
-  local icon = ""
+  local icon = ''
 
-  local ok, devicons = pcall(require, "nvim-web-devicons")
-  if (ok) then
+  local ok, devicons = pcall(require, 'nvim-web-devicons')
+  if ok then
     icon = devicons.get_icon(filename)
   end
 

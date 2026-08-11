@@ -21,7 +21,7 @@ M.setup = function(config)
   vim.keymap.set('n', '<leader>mb-', ':lua require("ricdotmarker").unmark_buffer()<Enter>', { silent = true })
   vim.keymap.set('n', '<leader>ml', ':lua require("ricdotmarker").mark_line()<Enter>', { silent = true })
 
-  vim.api.nvim_create_user_command('rdm', function(opts)
+  vim.api.nvim_create_user_command('Rdm', function(opts)
     if opts.args == 'mark' then
       M.mark_buffer()
     end

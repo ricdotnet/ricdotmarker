@@ -16,9 +16,9 @@ M.setup = function(config)
     RicdotmarkerConfig = config
   end
 
-  vim.keymap.set('n', '<leader>mbb', ':lua require("ricdotmarker").open_window()<Enter>', { silent = true })
-  vim.keymap.set('n', '<leader>mb', ':lua require("ricdotmarker").mark_buffer()<Enter>', { silent = true })
-  vim.keymap.set('n', '<leader>mb-', ':lua require("ricdotmarker").unmark_buffer()<Enter>', { silent = true })
+  vim.keymap.set('n', '<leader>mo', ':lua require("ricdotmarker").open_window()<Enter>', { silent = true })
+  vim.keymap.set('n', '<leader>mm', ':lua require("ricdotmarker").mark_buffer()<Enter>', { silent = true })
+  vim.keymap.set('n', '<leader>mu', ':lua require("ricdotmarker").unmark_buffer()<Enter>', { silent = true })
   vim.keymap.set('n', '<leader>ml', ':lua require("ricdotmarker").mark_line()<Enter>', { silent = true })
 
   vim.api.nvim_create_user_command('Rdm', function(opts)

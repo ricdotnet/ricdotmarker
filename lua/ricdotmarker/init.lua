@@ -148,10 +148,9 @@ M.open_window = function()
     )
   end
 
-  local icon = mark.icon or '#'
-
   local marks = {}
   for _, mark in ipairs(Marks) do
+    local icon = mark.icon or '#'
     table.insert(marks, '> ' .. icon .. ' ' .. mark.display_name)
   end
 

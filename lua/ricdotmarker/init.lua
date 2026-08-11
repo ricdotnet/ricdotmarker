@@ -149,13 +149,22 @@ M.open_window = function()
   end
 
   local marks = {}
+
   for _, mark in ipairs(Marks) do
     local icon = mark.icon or '#'
     table.insert(marks, '> ' .. icon .. ' ' .. mark.display_name)
   end
 
-  vim.api.nvim_buf_set_lines(bufnr, 0, #marks - 2, false, marks)
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, marks)
   vim.api.nvim_buf_set_option(bufnr, 'filetype', 'ricdotmarker')
+
+  for row, mark in ipairs(Marks) do
+    local icon = mark.icon or '#'
+
+    vim.api.nvim_buf_add_highlight(bufnr, -1, 'Comment', row - 1, 0, 2)
+    vim.api.nvim_buf_add_highlight(bufnr, -1, 'Special', row - 1, 2, 2 + #icon)
+    vim.api.nvim_buf_add_highlight(bufnr, -1, 'Normal', row - 1, 3 + #icon, -1)
+  end
 
   vim.cmd 'set nomodifiable'
   vim.cmd 'autocmd BufLeave <buffer> ++nested ++once lua require("ricdotmarker.window").close_window()'

@@ -25,8 +25,8 @@ W.create_window = function()
     min_height = math.floor(win_height * 0.9) - 2
   end
 
-  local borderchars = { '═', '║', '═', '║', '╔', '╗', '╝', '╚' }
-  -- local borderchars = RicdotmarkerConfig.borderchars or { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
+  -- local borderchars = { '═', '║', '═', '║', '╔', '╗', '╝', '╚' }
+  local borderchars = RicdotmarkerConfig.borderchars or { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
 
   local popup = require 'plenary.popup'
 

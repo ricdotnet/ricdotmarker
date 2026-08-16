@@ -156,14 +156,17 @@ M.open_window = function()
   end
 
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, marks)
-  vim.api.nvim_buf_set_option(bufnr, 'filetype', 'ricdotmarker')
+  vim.api.nvim_set_option_value('filetype', 'ricdotmarker', { buf = bufnr })
 
   for row, mark in ipairs(Marks) do
     local icon = mark.icon or '#'
 
-    vim.api.nvim_buf_add_highlight(bufnr, -1, 'Comment', row - 1, 0, 2)
-    vim.api.nvim_buf_add_highlight(bufnr, -1, 'Special', row - 1, 2, 2 + #icon)
-    vim.api.nvim_buf_add_highlight(bufnr, -1, 'Normal', row - 1, 3 + #icon, -1)
+    -- vim.api.nvim_buf_add_highlight(bufnr, -1, 'Comment', row - 1, 0, 2)
+    -- vim.api.nvim_buf_add_highlight(bufnr, -1, 'Special', row - 1, 2, 2 + #icon)
+    -- vim.api.nvim_buf_add_highlight(bufnr, -1, 'Normal', row - 1, 3 + #icon, -1)
+    vim.hl.range(bufnr, -1, 'Comment', { line = row - 1, col_start = 0 }, { line = row - 1, col_end = 2 })
+    vim.hl.range(bufnr, -1, 'Special', { line = row - 1, col_start = 2 }, { line = row - 1, col_end = 2 + #icon })
+    vim.hl.range(bufnr, -1, 'Normal', { line = row - 1, col_start = 3 + #icon }, { line = row - 1, col_end = -1 })
   end
 
   vim.cmd 'set nomodifiable'
